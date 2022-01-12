@@ -12,22 +12,19 @@ export default function useColorPicker(initialState) {
     })
     switch (name) {
       case 'fgColor':
-       
         setDidChangeColor(true);
         break;
-      case 'bgColor':
-        
+      case 'bgColor': 
         setDidChangeColor(true);
         break;
       case 'content':
         setDidChangeColor(false);
-        
         break;
       default:
         break;
     }
     
   };
-  return [formState, didChangeColor, handleChange]
+  return {formState, didChangeColor, handleChange}
   
 }
