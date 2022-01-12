@@ -5,7 +5,8 @@ import useAffirmation from '../../hooks/useAffirmation';
 
 export default function ColorPicker() {
   const {formState, didChangeColor, handleChange} = useColorPicker({fgColor:'#ffcc00', bgColor:'#212121', content:'Hello, world!', didChangeColor: false })
-  const { affirmation } = useAffirmation(formState.bgColor, formState.fgColor)
+  const { bgColor, fgColor, content } = formState;
+  const { affirmation } = useAffirmation(bgColor, fgColor)
 
   return (
     <>
@@ -19,25 +20,25 @@ export default function ColorPicker() {
           type="color"
           name="fgColor"
           aria-label="foreground color"
-          value={formState.fgColor}
+          value={fgColor}
           onChange={handleChange}
         />
         <input
           type="color"
           name="bgColor"
           aria-label="background color"
-          value={formState.bgColor}
+          value={bgColor}
           onChange={handleChange}
         />
         <input
           type="text"
           name="content"
           aria-label="content"
-          value={formState.content}
+          value={content}
           onChange={handleChange}
         />
       </fieldset>
-      <Display content={formState.content} bgColor={formState.bgColor} fgColor={formState.fgColor} />
+      <Display content={content} bgColor={bgColor} fgColor={fgColor} />
     </>
   );
 }
